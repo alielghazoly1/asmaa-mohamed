@@ -2752,7 +2752,7 @@
                             </div>
                         </div>
                         <div class='t396__elem tn-elem tn-elem__24434337531771277026942000001' data-elem-id='1771277026942000001' data-elem-type='text' data-field-top-value="45" data-field-left-value="323" data-field-height-value="64" data-field-width-value="560" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-heightunits-value="px" data-field-widthunits-value="px" data-field-textfit-value="autoheight" data-field-fontsize-value="41" data-field-left-res-320-value="-120" data-field-left-res-480-value="-40" data-field-left-res-640-value="40" data-field-left-res-960-value="200">
-                            <div class='tn-atom' field='tn_text_1771277026942000001'>The celebration begins.</div>
+                            <div class='tn-atom' field='tn_text_1771277026942000001'>The celebration begins. 🤎</div>
                         </div>
                         <div class='t396__elem tn-elem tn-elem__24434337531779543504626 t-animate' data-elem-id='1779543504626' data-elem-type='image' data-field-top-value="110" data-field-left-value="531" data-field-height-value="28" data-field-width-value="139" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-heightunits-value="px" data-field-widthunits-value="px" data-animate-style="zoomin" data-animate-duration="2" data-animate-scale="0.15" data-animate-mobile="y" data-field-filewidth-value="471" data-field-fileheight-value="95" data-field-heightmode-value="hug" data-field-left-res-320-value="91" data-field-height-res-320-value="28" data-field-left-res-480-value="171" data-field-height-res-480-value="28" data-field-left-res-640-value="251" data-field-height-res-640-value="28" data-field-left-res-960-value="411" data-field-height-res-960-value="28">
                             <div class='tn-atom'>
@@ -5893,18 +5893,41 @@
                         filter: contrast(1.1) saturate(1.08) brightness(1.02);
                     }
                     #loc-section.loc-inview .loc-photo-wrap img { transform: scale(1); }
-                    .loc-photo-caption {
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        padding: 30px 20px 18px;
-                        background: linear-gradient(0deg, rgba(30,20,10,0.6), transparent);
-                        font-family: 'EB Garamond', serif;
-                        font-style: italic;
-                        font-size: 16px;
-                        color: #fdf6ea;
+
+                    /* elegant hall name, placed above the photo */
+                    .loc-hall-heading {
+                        margin: 14px 0 28px;
+                        opacity: 0;
+                        transform: translateY(16px);
+                        transition: opacity 1s ease 0.15s, transform 1s ease 0.15s;
+                    }
+                    #loc-section.loc-inview .loc-hall-heading { opacity: 1; transform: translateY(0); }
+                    .loc-hall-flourish {
+                        display: block;
+                        color: #c9ad7a;
+                        font-size: 20px;
+                        margin-bottom: 8px;
+                        letter-spacing: 2px;
+                    }
+                    .loc-hall-name {
+                        font-family: 'Amiri', serif;
+                        font-weight: 700;
+                        font-size: 32px;
+                        color: #4a3624;
                         letter-spacing: 0.5px;
+                    }
+                    .loc-hall-rule {
+                        width: 70px;
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, #c9ad7a, transparent);
+                        margin: 14px auto 0;
+                        transform: scaleX(0);
+                        transition: transform 1s ease 0.5s;
+                    }
+                    #loc-section.loc-inview .loc-hall-rule { transform: scaleX(1); }
+
+                    @media screen and (max-width: 479px) {
+                        .loc-hall-name { font-size: 26px; }
                     }
 
                     .loc-map-wrap {
@@ -5950,9 +5973,14 @@
                 </div>
                 <!-- <div class="loc-title">في انتظاركم هناك</div> -->
 
+                <div class="loc-hall-heading">
+                    <span class="loc-hall-flourish">❦</span>
+                    <span class="loc-hall-name">قاعة القصر الكبير</span>
+                    <div class="loc-hall-rule"></div>
+                </div>
+
                 <div class="loc-photo-wrap">
                     <img src="images/venue-hall.jpeg" alt="قاعة القصر الكبير" loading="lazy">
-                    <div class="loc-photo-caption">قاعة القصر الكبير</div>
                 </div>
 
                 <div class="loc-map-wrap">
