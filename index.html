@@ -301,7 +301,7 @@
             #wg-scroll-hint {
                 position: fixed;
                 left: 50%;
-                bottom: 26px;
+                bottom: 110px;
                 transform: translateX(-50%);
                 z-index: 998000;
                 display: flex;
@@ -311,6 +311,16 @@
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.8s ease;
+            }
+            @media screen and (max-width: 639px) {
+                #wg-scroll-hint {
+                    bottom: 150px;
+                }
+            }
+            @media screen and (max-width: 479px) {
+                #wg-scroll-hint {
+                    bottom: 170px;
+                }
             }
             #wg-scroll-hint.wg-show {
                 opacity: 1;
