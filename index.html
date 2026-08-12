@@ -296,6 +296,92 @@
         </script>
         <!-- ===== /Custom Open-Invitation Animation ===== -->
 
+        <!-- ===== Scroll-Down Hint + Auto-Scroll after Opening the Invitation ===== -->
+        <style>
+            #wg-scroll-hint {
+                position: fixed;
+                left: 50%;
+                bottom: 26px;
+                transform: translateX(-50%);
+                z-index: 998000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.8s ease;
+            }
+            #wg-scroll-hint.wg-show {
+                opacity: 1;
+                pointer-events: auto;
+                cursor: pointer;
+            }
+            #wg-scroll-hint .wg-scroll-word {
+                font-family: 'EB Garamond', serif;
+                font-size: 14px;
+                letter-spacing: 3px;
+                color: #6b5231;
+                text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+            }
+            #wg-scroll-hint .wg-scroll-arrow {
+                width: 20px;
+                height: 20px;
+                border-right: 2px solid #6b5231;
+                border-bottom: 2px solid #6b5231;
+                transform: rotate(45deg);
+                animation: wgScrollBounce 1.6s ease-in-out infinite;
+            }
+            @keyframes wgScrollBounce {
+                0%, 100% { transform: rotate(45deg) translate(0,0); opacity: 0.5; }
+                50% { transform: rotate(45deg) translate(6px,6px); opacity: 1; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                #wg-scroll-hint .wg-scroll-arrow { animation: none; }
+            }
+        </style>
+        <div id="wg-scroll-hint" aria-hidden="true">
+            <span class="wg-scroll-word">مرر لأسفل</span>
+            <span class="wg-scroll-arrow"></span>
+        </div>
+        <script>
+            (function() {
+                function waitForEl(selector, cb) {
+                    var el = document.querySelector(selector);
+                    if (el) { cb(el); } else { setTimeout(function() { waitForEl(selector, cb); }, 100); }
+                }
+                function scrollToNext() {
+                    var next = document.getElementById('rec2443433723') || document.getElementById('rec2443433703');
+                    if (next) {
+                        next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                    }
+                }
+                waitForEl('.popup-enter', function(btn) {
+                    var hint = document.getElementById('wg-scroll-hint');
+                    var triggered = false;
+                    btn.addEventListener('click', function() {
+                        if (triggered) return;
+                        triggered = true;
+                        // show the "scroll down" hint once the opening animation has mostly played out
+                        setTimeout(function() {
+                            if (hint) hint.classList.add('wg-show');
+                        }, 2200);
+                        // let the screen scroll itself down after the invitation opens
+                        setTimeout(scrollToNext, 3200);
+                    });
+                    if (hint) {
+                        hint.addEventListener('click', scrollToNext);
+                    }
+                    window.addEventListener('scroll', function() {
+                        if (window.scrollY > 40 && hint) { hint.classList.remove('wg-show'); }
+                    }, { passive: true });
+                });
+            })();
+        </script>
+        <!-- ===== /Scroll-Down Hint + Auto-Scroll ===== -->
+
         <!-- ===== Ambient Flying Birds (persistent, loops back and forth across the whole site) ===== -->
         <style>
             #wg-ambient-birds {
