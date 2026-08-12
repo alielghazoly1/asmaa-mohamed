@@ -301,7 +301,7 @@
             #wg-scroll-hint {
                 position: fixed;
                 left: 50%;
-                bottom: 70px;
+                bottom: 40px;
                 transform: translateX(-50%);
                 z-index: 998000;
                 display: flex;
@@ -314,12 +314,12 @@
             }
             @media screen and (max-width: 639px) {
                 #wg-scroll-hint {
-                    bottom: 100px;
+                    bottom: 70px;
                 }
             }
             @media screen and (max-width: 479px) {
                 #wg-scroll-hint {
-                    bottom: 120px;
+                    bottom: 90px;
                 }
             }
             #wg-scroll-hint.wg-show {
@@ -328,9 +328,11 @@
                 cursor: pointer;
             }
             #wg-scroll-hint .wg-scroll-word {
-                font-family: 'EB Garamond', serif;
-                font-size: 13px;
-                letter-spacing: 3px;
+                font-family: 'Amiri', serif;
+                direction: rtl;
+                unicode-bidi: isolate;
+                font-size: 15px;
+                letter-spacing: normal;
                 color: #6b5231;
                 text-shadow: 0 1px 3px rgba(255,250,242,0.9);
             }
