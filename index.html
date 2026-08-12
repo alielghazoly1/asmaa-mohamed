@@ -301,25 +301,25 @@
             #wg-scroll-hint {
                 position: fixed;
                 left: 50%;
-                bottom: 110px;
+                bottom: 70px;
                 transform: translateX(-50%);
                 z-index: 998000;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 8px;
+                gap: 10px;
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.8s ease;
             }
             @media screen and (max-width: 639px) {
                 #wg-scroll-hint {
-                    bottom: 150px;
+                    bottom: 100px;
                 }
             }
             @media screen and (max-width: 479px) {
                 #wg-scroll-hint {
-                    bottom: 170px;
+                    bottom: 120px;
                 }
             }
             #wg-scroll-hint.wg-show {
@@ -329,30 +329,43 @@
             }
             #wg-scroll-hint .wg-scroll-word {
                 font-family: 'EB Garamond', serif;
-                font-size: 14px;
+                font-size: 13px;
                 letter-spacing: 3px;
                 color: #6b5231;
-                text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+                text-shadow: 0 1px 3px rgba(255,250,242,0.9);
             }
-            #wg-scroll-hint .wg-scroll-arrow {
-                width: 20px;
-                height: 20px;
-                border-right: 2px solid #6b5231;
-                border-bottom: 2px solid #6b5231;
-                transform: rotate(45deg);
-                animation: wgScrollBounce 1.6s ease-in-out infinite;
+            #wg-scroll-hint .wg-scroll-circle {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 250, 242, 0.85);
+                border: 1px solid #c9ad7a;
+                box-shadow: 0 6px 16px rgba(74,54,36,0.18);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: wgScrollBounce 1.8s ease-in-out infinite;
+            }
+            #wg-scroll-hint .wg-scroll-circle svg {
+                width: 16px;
+                height: 16px;
+                display: block;
             }
             @keyframes wgScrollBounce {
-                0%, 100% { transform: rotate(45deg) translate(0,0); opacity: 0.5; }
-                50% { transform: rotate(45deg) translate(6px,6px); opacity: 1; }
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(6px); }
             }
             @media (prefers-reduced-motion: reduce) {
-                #wg-scroll-hint .wg-scroll-arrow { animation: none; }
+                #wg-scroll-hint .wg-scroll-circle { animation: none; }
             }
         </style>
         <div id="wg-scroll-hint" aria-hidden="true">
             <span class="wg-scroll-word">مرر لأسفل</span>
-            <span class="wg-scroll-arrow"></span>
+            <span class="wg-scroll-circle">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 9 L12 16 L19 9" stroke="#6b5231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
         </div>
         <script>
             (function() {
