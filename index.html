@@ -301,7 +301,7 @@
             #wg-scroll-hint {
                 position: fixed;
                 left: 50%;
-                bottom: 40px;
+                bottom: 22px;
                 transform: translateX(-50%);
                 z-index: 998000;
                 display: flex;
@@ -314,12 +314,12 @@
             }
             @media screen and (max-width: 639px) {
                 #wg-scroll-hint {
-                    bottom: 70px;
+                    bottom: 45px;
                 }
             }
             @media screen and (max-width: 479px) {
                 #wg-scroll-hint {
-                    bottom: 90px;
+                    bottom: 60px;
                 }
             }
             #wg-scroll-hint.wg-show {
@@ -328,11 +328,11 @@
                 cursor: pointer;
             }
             #wg-scroll-hint .wg-scroll-word {
-                font-family: 'Amiri', serif;
-                direction: rtl;
-                unicode-bidi: isolate;
-                font-size: 15px;
-                letter-spacing: normal;
+                font-family: 'EB Garamond', serif;
+                direction: ltr;
+                font-size: 13px;
+                letter-spacing: 3px;
+                text-transform: uppercase;
                 color: #6b5231;
                 text-shadow: 0 1px 3px rgba(255,250,242,0.9);
             }
@@ -362,7 +362,7 @@
             }
         </style>
         <div id="wg-scroll-hint" aria-hidden="true">
-            <span class="wg-scroll-word">مرر لأسفل</span>
+            <span class="wg-scroll-word">Scroll Down</span>
             <span class="wg-scroll-circle">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 9 L12 16 L19 9" stroke="#6b5231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
